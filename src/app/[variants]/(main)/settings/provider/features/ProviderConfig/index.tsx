@@ -127,7 +127,7 @@ const ProviderConfig = memo<ProviderConfigProps>(
       defaultShowBrowserRequest,
       disableBrowserRequest,
       showChecker = true,
-    } = settings;
+    } = settings || {};
     const { t } = useTranslation('modelProvider');
     const [form] = Form.useForm();
     const { cx, styles, theme } = useStyles();
@@ -258,7 +258,7 @@ const ProviderConfig = memo<ProviderConfigProps>(
       children: isLoading ? (
         <Skeleton.Button active className={styles.switchLoading} />
       ) : (
-        <Switch disabled={configUpdating} value={isFetchOnClient} />
+        <Switch checked={isFetchOnClient} disabled={configUpdating} />
       ),
       desc: t('providerModels.config.fetchOnClient.desc'),
       label: t('providerModels.config.fetchOnClient.title'),
